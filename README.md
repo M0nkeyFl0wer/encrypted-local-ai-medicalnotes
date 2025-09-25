@@ -106,12 +106,14 @@ Ready for healthcare professional use with full HIPAA compliance.
 
 ---
 
-## 🧪 **Demo Features**
+## 🧪 **Current Demo Features (v1.0)**
+
+**⚠️ Important: This is a text-based demo. Voice dictation features are planned for the next release.**
 
 The current version demonstrates:
 
-### **Core Functionality**
-- **Secure Medical Note Creation** - Sample patient records with realistic medical data
+### **Core Functionality (Implemented)**
+- **Secure Medical Note Creation** - Text-based patient records with realistic medical data
 - **AES-256-GCM Encryption** - Military-grade encryption for all patient information
 - **Secure Storage** - Encrypted JSON files with integrity verification
 - **Audit Trail** - Complete logging of all data access and modifications
@@ -201,11 +203,13 @@ The system will display a complete encryption/decryption cycle with:
 
 ## 🚀 **Future Enhancements**
 
-### **Phase 1: Voice Recognition (Planned)**
-- **Real-time speech-to-text** during patient consultations
-- **Medical terminology recognition** with clinical accuracy
+### **Phase 1: Voice Recognition with Whisper (Next Release)**
+- **🎤 Whisper Integration** - OpenAI's Whisper for accurate medical transcription
+- **Real-time speech-to-text** during patient consultations and examinations
+- **Medical terminology recognition** with clinical accuracy (SNOMED CT, ICD-10)
 - **Multi-language support** for diverse patient populations
 - **Culturally sensitive AI** that respects all backgrounds and lived experiences
+- **Voice-activated note creation** - Doctors can dictate notes hands-free during patient care
 
 ### **Phase 2: Advanced Features (Roadmap)**
 - **HL7 FHIR Integration** - Seamless EHR interoperability
@@ -282,11 +286,12 @@ This software is provided under a **PROPRIETARY** license for medical testing an
 
 ## 🎯 **Project Status**
 
-- ✅ **Core Security Features**: Complete and tested
+- ✅ **Core Security Features**: Complete and tested (text-based notes)
 - ✅ **HIPAA Compliance Framework**: Implemented and documented
 - ✅ **Cross-Platform Support**: Windows, Mac, Linux ready
-- ✅ **Medical Professional Testing**: Ready for feedback
-- 🚧 **Voice Recognition Integration**: Planned for next release
+- ✅ **Medical Professional Testing**: Ready for feedback on security/encryption
+- 🚧 **Voice Recognition with Whisper**: Planned for v2.0 release
+- 🚧 **Real-time Speech-to-Text**: Next major feature addition
 - 🚧 **Mobile Applications**: Future development phase
 
 ---
