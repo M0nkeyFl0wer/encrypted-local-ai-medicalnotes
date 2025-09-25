@@ -1,0 +1,38 @@
+{
+  "name": "Encrypted Medical Notes System",
+  "description": "HIPAA-compliant encrypted medical notes management system with local AI processing for healthcare professionals",
+  "type": "spec-driven",
+  "agents": {
+    "requirements_analyst": {
+      "active": true,
+      "priority": "high"
+    },
+    "design_architect": {
+      "active": true,
+      "priority": "high"
+    },
+    "task_planner": {
+      "active": true,
+      "priority": "medium"
+    },
+    "implementation_coder": {
+      "active": true,
+      "priority": "high"
+    },
+    "quality_reviewer": {
+      "active": true,
+      "priority": "high"
+    },
+    "security_auditor": {
+      "active": true,
+      "priority": "critical"
+    },
+    "steering_documenter": {
+      "active": true,
+      "priority": "medium"
+    }
+  },
+  "workflow": "spec-driven-secure",
+  "securityLevel": "high",
+  "initialized": "2025-09-25T17:34:38.012Z"
+}

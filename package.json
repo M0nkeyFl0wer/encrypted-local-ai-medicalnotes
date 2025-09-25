@@ -1,0 +1,50 @@
+{
+  "name": "encrypted-local-ai-medicalnotes",
+  "version": "1.0.0",
+  "description": "Secure, HIPAA-compliant medical notes management with local AI processing",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "webpack serve --mode development --config webpack.dev.js",
+    "build": "webpack --mode production --config webpack.prod.js",
+    "test": "jest --coverage",
+    "test:security": "npm audit && bandit -r src/",
+    "lint": "eslint src/ --ext .js,.jsx,.ts,.tsx",
+    "lint:security": "eslint src/ --config .eslintrc.security.js",
+    "typecheck": "tsc --noEmit",
+    "start:electron": "electron dist/main.js",
+    "build:electron": "electron-builder",
+    "security:scan": "snyk test && npm audit"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "electron": "^27.0.0",
+    "sqlcipher": "^5.1.0",
+    "@tensorflow/tfjs": "^4.10.0",
+    "node-forge": "^1.3.1",
+    "bcrypt": "^5.1.1",
+    "argon2": "^0.31.0",
+    "helmet": "^7.1.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.0",
+    "@types/react": "^18.2.0",
+    "@types/node": "^20.0.0",
+    "webpack": "^5.88.0",
+    "jest": "^29.6.0",
+    "eslint": "^8.50.0",
+    "eslint-plugin-security": "^1.7.1",
+    "bandit": "^2.0.0",
+    "snyk": "^1.1200.0"
+  },
+  "keywords": [
+    "medical",
+    "encryption",
+    "AI",
+    "HIPAA",
+    "privacy",
+    "healthcare"
+  ],
+  "license": "PROPRIETARY",
+  "private": true
+}
