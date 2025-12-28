@@ -201,6 +201,64 @@ The system will display a complete encryption/decryption cycle with:
 
 ---
 
+## 📦 **Building Executables**
+
+### **Quick CLI Build (Standalone .exe)**
+
+Build a single executable that works without Node.js installed:
+
+```bash
+# Install build tools
+npm install
+
+# Build for all platforms
+npm run build:cli:all
+
+# Or build for specific platform:
+npm run build:cli:win    # Windows .exe
+npm run build:cli:mac    # macOS binary
+npm run build:cli:linux  # Linux binary
+```
+
+**Output location:** `dist/` folder
+
+### **Electron Desktop App Build**
+
+Build a full desktop application with GUI:
+
+```bash
+# Install dependencies
+npm install
+
+# Build for your platform
+npm run build:electron        # Auto-detect platform
+npm run build:electron:win    # Windows installer
+npm run build:electron:mac    # macOS .dmg
+npm run build:electron:linux  # Linux AppImage/deb
+```
+
+**Output location:** `dist/electron/` folder
+
+### **Development Mode**
+
+```bash
+# Run CLI demo
+npm start
+
+# Run Electron app in development
+npm run dev
+```
+
+### **Build Requirements**
+
+| Platform | Requirements |
+|----------|-------------|
+| Windows  | Windows 10+, Node.js 18+ |
+| macOS    | macOS 10.15+, Node.js 18+, Xcode CLI tools |
+| Linux    | Ubuntu 18.04+, Node.js 18+ |
+
+---
+
 ## 🚀 **Future Enhancements**
 
 ### **Phase 1: Voice Recognition with Whisper (Next Release)**

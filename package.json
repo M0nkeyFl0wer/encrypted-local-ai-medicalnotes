@@ -2,40 +2,79 @@
   "name": "encrypted-local-ai-medicalnotes",
   "version": "1.0.0",
   "description": "Secure, HIPAA-compliant medical notes management with local AI processing",
-  "main": "src/index.js",
+  "main": "src/main/electron.js",
+  "bin": {
+    "medical-notes": "./src/index.js"
+  },
   "scripts": {
-    "dev": "webpack serve --mode development --config webpack.dev.js",
-    "build": "webpack --mode production --config webpack.prod.js",
-    "test": "jest --coverage",
-    "test:security": "npm audit && bandit -r src/",
-    "lint": "eslint src/ --ext .js,.jsx,.ts,.tsx",
-    "lint:security": "eslint src/ --config .eslintrc.security.js",
-    "typecheck": "tsc --noEmit",
-    "start:electron": "electron dist/main.js",
+    "start": "node src/index.js",
+    "dev": "electron src/main/electron.js",
+    "build:cli": "pkg . --out-path dist/cli",
+    "build:cli:win": "pkg . --target win-x64 --output dist/medical-notes-win.exe",
+    "build:cli:mac": "pkg . --target macos-x64 --output dist/medical-notes-macos",
+    "build:cli:linux": "pkg . --target linux-x64 --output dist/medical-notes-linux",
+    "build:cli:all": "npm run build:cli:win && npm run build:cli:mac && npm run build:cli:linux",
     "build:electron": "electron-builder",
-    "security:scan": "snyk test && npm audit"
+    "build:electron:win": "electron-builder --win",
+    "build:electron:mac": "electron-builder --mac",
+    "build:electron:linux": "electron-builder --linux",
+    "test": "node src/index.js",
+    "test:unit": "jest --coverage",
+    "lint": "eslint src/ --ext .js,.jsx",
+    "security:scan": "npm audit"
+  },
+  "pkg": {
+    "scripts": "src/**/*.js",
+    "assets": [
+      "data/**/*"
+    ],
+    "targets": [
+      "node18-win-x64",
+      "node18-macos-x64",
+      "node18-linux-x64"
+    ],
+    "outputPath": "dist/cli"
+  },
+  "build": {
+    "appId": "com.medicalnotes.encrypted",
+    "productName": "Encrypted Medical Notes",
+    "directories": {
+      "output": "dist/electron"
+    },
+    "files": [
+      "src/**/*",
+      "data/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": ["nsis", "portable"],
+      "icon": "assets/icon.ico"
+    },
+    "mac": {
+      "target": ["dmg", "zip"],
+      "icon": "assets/icon.icns",
+      "category": "public.app-category.medical"
+    },
+    "linux": {
+      "target": ["AppImage", "deb"],
+      "icon": "assets/icon.png",
+      "category": "Office"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
   },
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "electron": "^27.0.0",
-    "sqlcipher": "^5.1.0",
-    "@tensorflow/tfjs": "^4.10.0",
-    "node-forge": "^1.3.1",
-    "bcrypt": "^5.1.1",
-    "argon2": "^0.31.0",
-    "helmet": "^7.1.0"
+    "electron-store": "^8.1.0"
   },
   "devDependencies": {
-    "typescript": "^5.2.0",
-    "@types/react": "^18.2.0",
-    "@types/node": "^20.0.0",
-    "webpack": "^5.88.0",
-    "jest": "^29.6.0",
+    "electron": "^27.0.0",
+    "electron-builder": "^24.6.0",
+    "pkg": "^5.8.1",
     "eslint": "^8.50.0",
     "eslint-plugin-security": "^1.7.1",
-    "bandit": "^2.0.0",
-    "snyk": "^1.1200.0"
+    "jest": "^29.6.0"
   },
   "keywords": [
     "medical",

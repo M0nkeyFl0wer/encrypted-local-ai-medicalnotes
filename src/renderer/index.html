@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'">
+    <title>Encrypted Medical Notes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <div class="logo">
+                <span class="icon">🏥</span>
+                <h1>Encrypted Medical Notes</h1>
+            </div>
+            <div class="security-badge">
+                <span class="badge">🔒 HIPAA Compliant</span>
+                <span class="badge">🛡️ AES-256-GCM</span>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <aside class="sidebar">
+                <nav class="nav-menu">
+                    <button class="nav-btn active" data-view="notes">
+                        <span>📝</span> Notes
+                    </button>
+                    <button class="nav-btn" data-view="audit">
+                        <span>📊</span> Audit Log
+                    </button>
+                    <button class="nav-btn" data-view="settings">
+                        <span>⚙️</span> Settings
+                    </button>
+                </nav>
+                <div class="session-info">
+                    <p>Session Key: <span id="keyStatus">Not Generated</span></p>
+                    <button id="generateKeyBtn" class="btn btn-primary">Generate Key</button>
+                </div>
+            </aside>
+
+            <section class="content-area">
+                <!-- Notes View -->
+                <div id="notesView" class="view active">
+                    <div class="note-editor">
+                        <div class="form-group">
+                            <label for="patientId">Patient ID</label>
+                            <input type="text" id="patientId" placeholder="PAT-001" value="PAT-001">
+                        </div>
+                        <div class="form-group">
+                            <label for="noteContent">Medical Note</label>
+                            <textarea id="noteContent" placeholder="Enter medical note content...
+
+CHIEF COMPLAINT:
+[Patient complaint]
+
+HISTORY OF PRESENT ILLNESS:
+[Description]
+
+ASSESSMENT:
+[Diagnosis]
+
+PLAN:
+[Treatment plan]"></textarea>
+                        </div>
+                        <div class="button-group">
+                            <button id="encryptBtn" class="btn btn-success" disabled>
+                                🔐 Encrypt & Save
+                            </button>
+                            <button id="loadBtn" class="btn btn-secondary">
+                                📂 Load Note
+                            </button>
+                        </div>
+                    </div>
+                    <div id="statusMessage" class="status-message"></div>
+                </div>
+
+                <!-- Audit View -->
+                <div id="auditView" class="view">
+                    <h2>HIPAA Audit Trail</h2>
+                    <div id="auditLog" class="audit-log">
+                        <p class="empty-state">Initialize system to view audit log</p>
+                    </div>
+                </div>
+
+                <!-- Settings View -->
+                <div id="settingsView" class="view">
+                    <h2>Security Settings</h2>
+                    <div class="settings-panel">
+                        <div class="setting-item">
+                            <h3>Encryption Algorithm</h3>
+                            <p>AES-256-GCM (Authenticated Encryption)</p>
+                        </div>
+                        <div class="setting-item">
+                            <h3>Key Length</h3>
+                            <p>256 bits (32 bytes)</p>
+                        </div>
+                        <div class="setting-item">
+                            <h3>IV Length</h3>
+                            <p>128 bits (16 bytes)</p>
+                        </div>
+                        <div class="setting-item">
+                            <h3>Integrity Check</h3>
+                            <p>SHA-256 Checksum</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>v1.0.0 | All data encrypted locally | Zero network transmission</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

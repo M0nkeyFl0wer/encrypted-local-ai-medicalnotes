@@ -55,7 +55,7 @@ class EncryptedMedicalNotesSystem {
 
         try {
             const iv = crypto.randomBytes(this.ivLength);
-            const cipher = crypto.createCipher(this.algorithm, key, iv);
+            const cipher = crypto.createCipheriv(this.algorithm, key, iv);
 
             let encrypted = cipher.update(noteContent, 'utf8', 'hex');
             encrypted += cipher.final('hex');
@@ -102,7 +102,7 @@ class EncryptedMedicalNotesSystem {
         try {
             const iv = Buffer.from(encryptedNote.iv, 'hex');
             const tag = Buffer.from(encryptedNote.tag, 'hex');
-            const decipher = crypto.createDecipher(encryptedNote.algorithm, key, iv);
+            const decipher = crypto.createDecipheriv(encryptedNote.algorithm, key, iv);
 
             decipher.setAuthTag(tag);
 
